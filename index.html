@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surendranagar Yuvak Mandal — Data Register</title>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --card: #ffffff;
+      --primary: #1a5fb4;
+      --primary-dark: #0d3d7a;
+      --accent: #e8a317;
+      --border: #d8dee8;
+      --text: #1e2430;
+      --muted: #5c6678;
+      --danger: #c01c28;
+      --success: #1a7f37;
+      --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 { font-size: 1.5rem; font-weight: 700; }
+    header p { opacity: 0.9; font-size: 0.95rem; margin-top: 0.25rem; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 1.25rem; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-top: 3px solid var(--accent);
+    }
+
+    .stat-card .num { font-size: 1.75rem; font-weight: 700; color: var(--primary); }
+    .stat-card .lbl { font-size: 0.85rem; color: var(--muted); }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      color: var(--primary-dark);
+    }
+
+    .hint {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+      background: #f0f4fa;
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      border-left: 3px solid var(--primary);
+    }
+
+    .section-label {
+      grid-column: 1 / -1;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .upload-box {
+      border: 2px dashed var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      text-align: center;
+      background: #fafbfc;
+      margin-bottom: 1rem;
+    }
+
+    .upload-box input[type="file"] { margin: 0.5rem 0; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.85rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: var(--muted);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.55rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: #fff;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(26, 95, 180, 0.15);
+    }
+
+    textarea { resize: vertical; min-height: 70px; }
+    .full-width { grid-column: 1 / -1; }
+    .hidden { display: none !important; }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    button {
+      font-family: inherit;
+      font-size: 0.9rem;
+      padding: 0.55rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: opacity 0.15s;
+    }
+
+    button:hover { opacity: 0.88; }
+
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-secondary { background: #e8ecf2; color: var(--text); }
+    .btn-success { background: var(--success); color: #fff; }
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-accent { background: var(--accent); color: #1e2430; }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: end;
+      margin-bottom: 1rem;
+    }
+
+    .toolbar .field { flex: 1; min-width: 180px; }
+
+    .import-result {
+      margin-top: 0.75rem;
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .import-result.ok { display: block; background: #e6f4ea; color: var(--success); }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+
+    th {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.65rem 0.45rem;
+      text-align: left;
+      white-space: nowrap;
+      position: sticky;
+      top: 0;
+    }
+
+    td {
+      padding: 0.55rem 0.45rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td { background: #f8fafc; }
+    tr:hover td { background: #eef4fc; }
+
+    .actions { white-space: nowrap; }
+    .actions button { padding: 0.3rem 0.55rem; font-size: 0.78rem; margin-right: 0.25rem; }
+
+    .empty-msg { text-align: center; padding: 2rem; color: var(--muted); }
+
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--success);
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .checkbox-row input { width: auto; }
+
+    @media print {
+      header, .no-print, .card-entry, .card-upload { display: none !important; }
+      body { background: #fff; }
+      .card { box-shadow: none; padding: 0; }
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.2rem; }
+      th, td { font-size: 0.75rem; padding: 0.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Surendranagar Kshetra — Yuvak Mandal Data Register</h1>
+    <p>Manual entry or Excel upload — mandal-wise youth data (all in English)</p>
+  </header>
+
+  <div class="container">
+    <div class="stats no-print">
+      <div class="stat-card">
+        <div class="num" id="totalCount">0</div>
+        <div class="lbl">Total Youth</div>
+      </div>
+      <div class="stat-card">
+        <div class="num" id="mandalCount">—</div>
+        <div class="lbl">Selected Mandal</div>
+      </div>
+      <div class="stat-card">
+        <div class="num" id="mandalTotal">8</div>
+        <div class="lbl">Total Mandals</div>
+      </div>
+    </div>
+
+    <div class="card card-upload no-print">
+      <h2>Upload Excel File (Auto Entry)</h2>
+      <p class="hint">
+        Upload an Excel (.xlsx) or CSV file. Row 1 must contain column headers such as
+        <strong>Mandal, First Name, Father's Name, Surname, Date of Birth, Mobile, Study or Job, Study In, Job, Address, Blood Group,
+        Satsang Exam, APC/Gurukul Status, Which APC, Which Gurukul, From Year, To Year, Ex YTK, YTK Batch Month/Year,
+        Kshetriya Meeting %, Gosthi %, Sabha Attendance %, Is Karyakar, Parents fields, Address</strong>.
+        Matching columns are detected automatically.
+      </p>
+      <div class="upload-box">
+        <input type="file" id="excelFile" accept=".xlsx,.xls,.csv" />
+        <div class="checkbox-row">
+          <input type="checkbox" id="appendData" checked />
+          <label for="appendData" style="margin:0;font-weight:500;color:var(--text)">
+            Keep existing data — add new entries (uncheck = replace all data)
+          </label>
+        </div>
+        <div class="btn-row" style="justify-content:center;margin-top:0.75rem">
+          <button type="button" class="btn-success" onclick="importExcel()">Import File</button>
+          <button type="button" class="btn-accent" onclick="downloadTemplate()">Download Sample Excel</button>
+        </div>
+      </div>
+      <div class="import-result" id="importResult"></div>
+    </div>
+
+    <div class="card card-entry no-print">
+      <h2 id="formTitle">Add New Youth (Manual)</h2>
+      <form id="memberForm">
+        <input type="hidden" id="editId" value="" />
+        <div class="form-grid">
+          <div class="section-label">Basic Details</div>
+          <div>
+            <label for="mandal">Mandal Name *</label>
+            <select id="mandal" required></select>
+          </div>
+          <div>
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" required placeholder="Youth first name" />
+          </div>
+          <div>
+            <label for="fatherName">Father's Name</label>
+            <input type="text" id="fatherName" placeholder="Father's name" />
+          </div>
+          <div>
+            <label for="surname">Surname</label>
+            <input type="text" id="surname" placeholder="Surname / family name" />
+          </div>
+          <div>
+            <label for="dob">Date of Birth *</label>
+            <input type="date" id="dob" required />
+          </div>
+          <div>
+            <label for="age">Age</label>
+            <input type="text" id="age" readonly placeholder="Auto" />
+          </div>
+          <div>
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" id="mobile" placeholder="9876543210" maxlength="10" />
+          </div>
+          <div>
+            <label for="studyIn">Study In *</label>
+            <input type="text" id="studyIn" required placeholder="e.g. B.Com, 12th Science (all youth — current or completed study)" />
+          </div>
+          <div>
+            <label for="studyOrJob">Currently Study or Job?</label>
+            <select id="studyOrJob">
+              <option value="">— Select —</option>
+              <option value="Study">Study</option>
+              <option value="Job">Job</option>
+            </select>
+          </div>
+          <div id="jobInWrap" class="hidden">
+            <label for="jobIn">Job *</label>
+            <input type="text" id="jobIn" placeholder="e.g. Engineer, Teacher, Business" />
+          </div>
+          <div>
+            <label for="bloodGroup">Blood Group</label>
+            <select id="bloodGroup">
+              <option value="">— Select —</option>
+              <option>A+</option><option>A-</option>
+              <option>B+</option><option>B-</option>
+              <option>AB+</option><option>AB-</option>
+              <option>O+</option><option>O-</option>
+            </select>
+          </div>
+          <div>
+            <label for="satsangExam">Satsang Shikshan Exam</label>
+            <select id="satsangExam"></select>
+          </div>
+          <div>
+            <label for="examYear">Exam Year</label>
+            <input type="number" id="examYear" min="1990" max="2035" placeholder="2024" />
+          </div>
+
+          <div>
+            <label for="apcGurukulStatus">Ex APC / Current Study in APC / Gurukul</label>
+            <select id="apcGurukulStatus">
+              <option value="">— Select —</option>
+              <option>Ex APC</option>
+              <option>Current Study in APC</option>
+              <option>Ex Gurukul</option>
+              <option>Current in Gurukul</option>
+            </select>
+          </div>
+          <div id="whichApcWrap" class="hidden">
+            <label for="whichApc">Which APC</label>
+            <input type="text" id="whichApc" placeholder="APC name / location" />
+          </div>
+          <div id="whichGurukulWrap" class="hidden">
+            <label for="whichGurukul">Which Gurukul</label>
+            <input type="text" id="whichGurukul" placeholder="Gurukul name / location" />
+          </div>
+          <div id="apcGurukulPeriodWrap" class="hidden full-width">
+            <p class="hint" style="margin:0 0 0.65rem">Study period — typically 3 to 4 years (From Year → To Year)</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.85rem">
+              <div>
+                <label for="apcGurukulFromYear">From Year *</label>
+                <input type="number" id="apcGurukulFromYear" min="1990" max="2035" placeholder="2018" />
+              </div>
+              <div>
+                <label for="apcGurukulToYear">To Year *</label>
+                <input type="number" id="apcGurukulToYear" min="1990" max="2035" placeholder="2022" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="exYtk">Ex YTK?</label>
+            <select id="exYtk">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+          <div id="ytkBatchWrap" class="hidden">
+            <label for="ytkBatchMonth">YTK Batch Month</label>
+            <select id="ytkBatchMonth">
+              <option value="">— Month —</option>
+              <option>January</option><option>February</option><option>March</option>
+              <option>April</option><option>May</option><option>June</option>
+              <option>July</option><option>August</option><option>September</option>
+              <option>October</option><option>November</option><option>December</option>
+            </select>
+          </div>
+          <div id="ytkBatchYearWrap" class="hidden">
+            <label for="ytkBatchYear">YTK Batch Year</label>
+            <input type="number" id="ytkBatchYear" min="1990" max="2035" placeholder="2022" />
+          </div>
+
+          <div class="section-label">Attendance (%)</div>
+          <div>
+            <label for="attendanceKshetriya">Kshetriya Meeting %</label>
+            <input type="number" id="attendanceKshetriya" min="0" max="100" placeholder="85" />
+          </div>
+          <div>
+            <label for="attendanceGosthi">Gosthi %</label>
+            <input type="number" id="attendanceGosthi" min="0" max="100" placeholder="80" />
+          </div>
+          <div>
+            <label for="attendanceSabha">Sabha Attendance %</label>
+            <input type="number" id="attendanceSabha" min="0" max="100" placeholder="90" />
+          </div>
+
+          <div class="section-label">Karyakar Details (Youth)</div>
+          <div>
+            <label for="isKaryakar">Is Karyakar?</label>
+            <select id="isKaryakar">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+          <div id="karyakarTypeWrap" class="hidden">
+            <label for="karyakarType">Karyakar Type</label>
+            <select id="karyakarType">
+              <option value="">— Select —</option>
+              <option>Register Karyakar</option>
+              <option>Sahsanchalak/Sampark Karyakar</option>
+            </select>
+          </div>
+          <div id="designationWrap" class="hidden">
+            <label for="designation">Designation (Register Karyakar)</label>
+            <input type="text" id="designation" placeholder="e.g. Sabha Karyakar, Sanchalak" />
+          </div>
+
+          <div class="section-label">Parents Details</div>
+          <div>
+            <label for="fatherSatsangi">Father Satsangi?</label>
+            <select id="fatherSatsangi">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+          <div>
+            <label for="motherSatsangi">Mother Satsangi?</label>
+            <select id="motherSatsangi">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+          <div>
+            <label for="fatherKaryakar">Father Karyakar?</label>
+            <select id="fatherKaryakar">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+          <div id="fatherDesignationWrap" class="hidden">
+            <label for="fatherDesignation">Father Designation</label>
+            <input type="text" id="fatherDesignation" placeholder="e.g. Sabha Karyakar, Sanchalak" />
+          </div>
+          <div>
+            <label for="motherKaryakar">Mother Karyakar?</label>
+            <select id="motherKaryakar">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+          <div id="motherDesignationWrap" class="hidden">
+            <label for="motherDesignation">Mother Designation</label>
+            <input type="text" id="motherDesignation" placeholder="e.g. Sabha Karyakar, Mahila Karyakar" />
+          </div>
+
+          <div class="full-width">
+            <label for="address">Address</label>
+            <textarea id="address" placeholder="Home address, ward, city"></textarea>
+          </div>
+          <div class="full-width">
+            <label for="remarks">Remarks / Notes</label>
+            <textarea id="remarks" placeholder="Additional information"></textarea>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button type="submit" class="btn-primary" id="submitBtn">Save</button>
+          <button type="button" class="btn-secondary" id="cancelBtn" style="display:none">Cancel</button>
+          <button type="reset" class="btn-secondary" id="resetBtn">Clear Form</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Youth List</h2>
+      <div class="toolbar no-print">
+        <div class="field">
+          <label for="filterMandal">Filter by Mandal</label>
+          <select id="filterMandal"></select>
+        </div>
+        <div class="field">
+          <label for="searchName">Search by Name</label>
+          <input type="text" id="searchName" placeholder="Type name..." />
+        </div>
+        <button class="btn-accent" onclick="exportExcel()">Download Excel</button>
+        <button class="btn-secondary" onclick="window.print()">Print</button>
+        <button class="btn-danger" onclick="clearAllData()">Delete All Data</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Mandal</th>
+              <th>First Name</th>
+              <th>Father's Name</th>
+              <th>Surname</th>
+              <th>DOB</th>
+              <th>Age</th>
+              <th>Mobile</th>
+              <th>Study In</th>
+              <th>Study/Job</th>
+              <th>Job</th>
+              <th>Address</th>
+              <th>Blood</th>
+              <th>Satsang Exam</th>
+              <th>Year</th>
+              <th>APC/Gurukul</th>
+              <th>Which APC</th>
+              <th>Which Gurukul</th>
+              <th>From Yr</th>
+              <th>To Yr</th>
+              <th>Ex YTK</th>
+              <th>YTK Mo</th>
+              <th>YTK Yr</th>
+              <th>Kshetriya %</th>
+              <th>Gosthi %</th>
+              <th>Sabha %</th>
+              <th>Karyakar</th>
+              <th>Type</th>
+              <th>Y. Desig.</th>
+              <th>F. Sat.</th>
+              <th>M. Sat.</th>
+              <th>F. Kar.</th>
+              <th>F. Desig.</th>
+              <th>M. Kar.</th>
+              <th>M. Desig.</th>
+              <th>Remarks</th>
+              <th class="no-print">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+        <div class="empty-msg" id="emptyMsg" style="display:none">
+          No data yet. Add manually or upload an Excel file.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const STORAGE_KEY = "yuvakMandalData_v3";
+
+    const MANDALS = [
+      "Vivekanand Yuvak Mandal",
+      "Pramukh Swami Maharaj Marg Yuvak Mandal",
+      "Ratanpar Yuvak Mandal",
+      "Vadipara Yuvak Mandal",
+      "Dalmil Yuvak Mandal",
+      "Wadhwan Yuvak Mandal",
+      "Satvarapara Yuvak Mandal",
+      "Aksharpurushottam Mandir Yuvak Mandal",
+    ];
+
+    const SATSANG_EXAMS = [
+      "Prarambh",
+      "Pravesh",
+      "Parichay",
+      "Pravin",
+      "Pragna 1",
+      "Pragna 2",
+      "Pragna 3",
+    ];
+
+    const EXPORT_HEADERS = [
+      "Mandal", "First Name", "Father's Name", "Surname", "Date of Birth", "Age", "Mobile",
+      "Study or Job", "Study In", "Job", "Blood Group", "Satsang Exam", "Exam Year",
+      "APC/Gurukul Status", "Which APC", "Which Gurukul", "APC/Gurukul From Year", "APC/Gurukul To Year",
+      "Ex YTK", "YTK Batch Month", "YTK Batch Year",
+      "Kshetriya Meeting %", "Gosthi %", "Sabha Attendance %",
+      "Is Karyakar", "Karyakar Type", "Youth Designation",
+      "Father Satsangi", "Mother Satsangi", "Father Karyakar", "Father Designation",
+      "Mother Karyakar", "Mother Designation",
+      "Address", "Remarks",
+    ];
+
+    const COLUMN_ALIASES = {
+      mandal: ["mandal", "mandal name"],
+      firstName: ["first name", "youth name", "yuvak name", "given name"],
+      fatherName: ["father name", "father's name", "father", "pita", "pita name", "fathers name"],
+      surname: ["surname", "last name", "atak", "ataak", "family name", "caste"],
+      name: ["full name", "name"],
+      dob: ["date of birth", "dob", "birth date", "birthdate"],
+      age: ["age"],
+      mobile: ["mobile", "mobile number", "phone", "contact"],
+      studyOrJob: ["study or job", "study/job", "education or job", "type"],
+      studyIn: ["study in", "studying", "education", "study", "course", "degree"],
+      jobIn: ["job", "job in", "occupation", "work", "profession"],
+      jobStudy: ["education/job", "education job"],
+      address: ["address", "addr"],
+      bloodGroup: ["blood group", "blood", "bloodgroup"],
+      satsangExam: ["satsang exam", "satsang shikshan exam", "satsang", "exam", "pariksha"],
+      examYear: ["exam year", "year"],
+      apcGurukulStatus: ["apc/gurukul status", "apc gurukul status", "ex apc", "apc gurukul"],
+      whichApc: ["which apc", "apc name", "apc"],
+      whichGurukul: ["which gurukul", "gurukul name", "gurukul"],
+      apcGurukulFromYear: ["apc/gurukul from year", "from year", "start year", "apc from year", "gurukul from year"],
+      apcGurukulToYear: ["apc/gurukul to year", "to year", "end year", "apc to year", "gurukul to year"],
+      apcGurukulYear: ["apc/gurukul year", "which year", "institute year"],
+      exYtk: ["ex ytk", "ytk", "ex ytk?"],
+      ytkBatchMonth: ["ytk batch month", "batch month", "ytk month"],
+      ytkBatchYear: ["ytk batch year", "batch year", "ytk year"],
+      fatherSatsangi: ["father satsangi", "father is satsangi", "pita satsangi"],
+      motherSatsangi: ["mother satsangi", "mother is satsangi", "mata satsangi"],
+      fatherKaryakar: ["father karyakar", "father is karyakar", "pita karyakar"],
+      fatherDesignation: ["father designation", "father karyakar designation", "father hodd", "father post"],
+      motherKaryakar: ["mother karyakar", "mother is karyakar", "mata karyakar"],
+      motherDesignation: ["mother designation", "mother karyakar designation", "mother hodd", "mother post"],
+      attendanceKshetriya: ["kshetriya meeting %", "kshetriya meeting", "kshetriya %", "kshetriya"],
+      attendanceGosthi: ["gosthi %", "gosthi", "goshthi %", "goshthi"],
+      attendanceSabha: ["sabha attendance %", "sabha attendance", "sabha %", "sabha", "attendance %", "attendance"],
+      isKaryakar: ["is karyakar", "karyakar", "karyakar yes no"],
+      karyakarType: ["karyakar type", "type"],
+      designation: ["youth designation", "designation", "hodd", "hod", "post", "position"],
+      remarks: ["remarks", "note", "notes"],
+    };
+
+    const form = document.getElementById("memberForm");
+    const tableBody = document.getElementById("tableBody");
+    const emptyMsg = document.getElementById("emptyMsg");
+    const editId = document.getElementById("editId");
+    const formTitle = document.getElementById("formTitle");
+    const submitBtn = document.getElementById("submitBtn");
+    const cancelBtn = document.getElementById("cancelBtn");
+    const filterMandal = document.getElementById("filterMandal");
+    const searchName = document.getElementById("searchName");
+    const dobInput = document.getElementById("dob");
+    const ageInput = document.getElementById("age");
+    const isKaryakarEl = document.getElementById("isKaryakar");
+    const karyakarTypeEl = document.getElementById("karyakarType");
+    const designationEl = document.getElementById("designation");
+    const studyOrJobEl = document.getElementById("studyOrJob");
+    const studyInEl = document.getElementById("studyIn");
+    const jobInEl = document.getElementById("jobIn");
+    const fatherKaryakarEl = document.getElementById("fatherKaryakar");
+    const motherKaryakarEl = document.getElementById("motherKaryakar");
+    const fatherDesignationEl = document.getElementById("fatherDesignation");
+    const motherDesignationEl = document.getElementById("motherDesignation");
+    const apcGurukulStatusEl = document.getElementById("apcGurukulStatus");
+    const whichApcEl = document.getElementById("whichApc");
+    const whichGurukulEl = document.getElementById("whichGurukul");
+    const apcGurukulFromYearEl = document.getElementById("apcGurukulFromYear");
+    const apcGurukulToYearEl = document.getElementById("apcGurukulToYear");
+    const exYtkEl = document.getElementById("exYtk");
+    const ytkBatchMonthEl = document.getElementById("ytkBatchMonth");
+    const ytkBatchYearEl = document.getElementById("ytkBatchYear");
+
+    function isApcStatus(status) {
+      return status === "Ex APC" || status === "Current Study in APC";
+    }
+
+    function isGurukulStatus(status) {
+      return status === "Ex Gurukul" || status === "Current in Gurukul";
+    }
+
+    function normalizeApcGurukulStatus(val) {
+      const v = String(val || "").trim().toLowerCase();
+      if (v.includes("ex apc")) return "Ex APC";
+      if (v.includes("current") && v.includes("apc")) return "Current Study in APC";
+      if (v.includes("ex gurukul")) return "Ex Gurukul";
+      if (v.includes("current") && v.includes("gurukul")) return "Current in Gurukul";
+      return String(val || "").trim();
+    }
+
+    function updateApcGurukulYtkFields() {
+      const status = apcGurukulStatusEl.value;
+      const apc = isApcStatus(status);
+      const gurukul = isGurukulStatus(status);
+      const hasInstitute = apc || gurukul;
+
+      document.getElementById("whichApcWrap").classList.toggle("hidden", !apc);
+      document.getElementById("whichGurukulWrap").classList.toggle("hidden", !gurukul);
+      document.getElementById("apcGurukulPeriodWrap").classList.toggle("hidden", !hasInstitute);
+
+      whichApcEl.required = apc;
+      whichGurukulEl.required = gurukul;
+      apcGurukulFromYearEl.required = hasInstitute;
+      apcGurukulToYearEl.required = hasInstitute;
+
+      if (!apc) whichApcEl.value = "";
+      if (!gurukul) whichGurukulEl.value = "";
+      if (!hasInstitute) {
+        apcGurukulFromYearEl.value = "";
+        apcGurukulToYearEl.value = "";
+      }
+
+      const ytkYes = exYtkEl.value === "Yes";
+      document.getElementById("ytkBatchWrap").classList.toggle("hidden", !ytkYes);
+      document.getElementById("ytkBatchYearWrap").classList.toggle("hidden", !ytkYes);
+      ytkBatchMonthEl.required = ytkYes;
+      ytkBatchYearEl.required = ytkYes;
+      if (!ytkYes) {
+        ytkBatchMonthEl.value = "";
+        ytkBatchYearEl.value = "";
+      }
+    }
+
+    apcGurukulStatusEl.addEventListener("change", updateApcGurukulYtkFields);
+    exYtkEl.addEventListener("change", updateApcGurukulYtkFields);
+
+    function fillSelect(el, items, placeholder) {
+      el.innerHTML = "";
+      if (placeholder) {
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = placeholder;
+        el.appendChild(opt);
+      }
+      items.forEach((item) => {
+        const opt = document.createElement("option");
+        opt.value = item;
+        opt.textContent = item;
+        el.appendChild(opt);
+      });
+    }
+
+    function initDropdowns() {
+      fillSelect(document.getElementById("mandal"), MANDALS, "— Select —");
+      fillSelect(filterMandal, MANDALS, "All Mandals");
+      fillSelect(document.getElementById("satsangExam"), SATSANG_EXAMS, "— Select —");
+    }
+
+    function updateStudyJobFields() {
+      const type = studyOrJobEl.value;
+      document.getElementById("jobInWrap").classList.toggle("hidden", type !== "Job");
+      jobInEl.required = type === "Job";
+      if (type !== "Job") jobInEl.value = "";
+    }
+
+    studyOrJobEl.addEventListener("change", updateStudyJobFields);
+
+    function normalizeStudyOrJob(val) {
+      const v = String(val || "").trim().toLowerCase();
+      if (v === "study" || v === "studying" || v === "education") return "Study";
+      if (v === "job" || v === "work" || v === "working") return "Job";
+      return "";
+    }
+
+    function updateParentFields() {
+      const fatherYes = fatherKaryakarEl.value === "Yes";
+      const motherYes = motherKaryakarEl.value === "Yes";
+      document.getElementById("fatherDesignationWrap").classList.toggle("hidden", !fatherYes);
+      document.getElementById("motherDesignationWrap").classList.toggle("hidden", !motherYes);
+      fatherDesignationEl.required = fatherYes;
+      motherDesignationEl.required = motherYes;
+      if (!fatherYes) fatherDesignationEl.value = "";
+      if (!motherYes) motherDesignationEl.value = "";
+    }
+
+    fatherKaryakarEl.addEventListener("change", updateParentFields);
+    motherKaryakarEl.addEventListener("change", updateParentFields);
+
+    function updateKaryakarFields() {
+      const isYes = isKaryakarEl.value === "Yes";
+      document.getElementById("karyakarTypeWrap").classList.toggle("hidden", !isYes);
+      const isRegister = isYes && karyakarTypeEl.value === "Register Karyakar";
+      document.getElementById("designationWrap").classList.toggle("hidden", !isRegister);
+      if (!isYes) {
+        karyakarTypeEl.value = "";
+        designationEl.value = "";
+      }
+      if (!isRegister) designationEl.value = "";
+    }
+
+    isKaryakarEl.addEventListener("change", updateKaryakarFields);
+    karyakarTypeEl.addEventListener("change", updateKaryakarFields);
+
+    function normalizeHeader(h) {
+      return String(h || "").trim().toLowerCase().replace(/\s+/g, " ").replace(/[\/\\]/g, "/");
+    }
+
+    function mapHeaders(headers) {
+      const mapping = {};
+      const normalized = headers.map(normalizeHeader);
+
+      Object.entries(COLUMN_ALIASES).forEach(([field, aliases]) => {
+        const aliasNorm = aliases.map(normalizeHeader);
+        const idx = normalized.findIndex((h) =>
+          aliasNorm.some((a) => h === a || h.includes(a) || a.includes(h))
+        );
+        if (idx !== -1 && mapping[field] == null) mapping[field] = idx;
+      });
+
+      return mapping;
+    }
+
+    function excelDateToISO(value) {
+      if (value == null || value === "") return "";
+      if (value instanceof Date && !isNaN(value)) return value.toISOString().slice(0, 10);
+      if (typeof value === "number") {
+        const parsed = XLSX.SSF.parse_date_code(value);
+        if (parsed) {
+          const mm = String(parsed.m).padStart(2, "0");
+          const dd = String(parsed.d).padStart(2, "0");
+          return `${parsed.y}-${mm}-${dd}`;
+        }
+      }
+      const str = String(value).trim();
+      const dmy = str.match(/^(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{2,4})$/);
+      if (dmy) {
+        let [, d, m, y] = dmy;
+        if (y.length === 2) y = "20" + y;
+        return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
+      }
+      const ymd = str.match(/^(\d{4})[\/\-\.](\d{1,2})[\/\-\.](\d{1,2})$/);
+      if (ymd) return `${ymd[1]}-${ymd[2].padStart(2, "0")}-${ymd[3].padStart(2, "0")}`;
+      const dt = new Date(str);
+      if (!isNaN(dt)) return dt.toISOString().slice(0, 10);
+      return "";
+    }
+
+    function fullName(m) {
+      return [m.firstName, m.fatherName, m.surname].filter(Boolean).join(" ").trim();
+    }
+
+    function migrateMember(m) {
+      let out = { ...m };
+
+      if (!out.firstName && out.name) {
+        out.firstName = out.name;
+        out.fatherName = out.fatherName || "";
+        out.surname = out.surname || "";
+      }
+
+      if (!out.studyIn && out.jobStudy) {
+        out.studyIn = out.jobStudy;
+      }
+      if (!out.studyOrJob && out.jobIn) out.studyOrJob = "Job";
+      else if (!out.studyOrJob && out.studyIn) out.studyOrJob = "Study";
+
+      if (!out.firstName) out.firstName = "";
+      if (!out.fatherName) out.fatherName = "";
+      if (!out.surname) out.surname = "";
+      if (!out.studyOrJob) out.studyOrJob = "";
+      if (!out.studyIn) out.studyIn = "";
+      if (!out.jobIn) out.jobIn = "";
+      if (!out.fatherSatsangi) out.fatherSatsangi = "No";
+      if (!out.motherSatsangi) out.motherSatsangi = "No";
+      if (!out.fatherKaryakar) out.fatherKaryakar = "No";
+      if (!out.motherKaryakar) out.motherKaryakar = "No";
+      if (!out.fatherDesignation) out.fatherDesignation = "";
+      if (!out.motherDesignation) out.motherDesignation = "";
+      if (!out.apcGurukulStatus) out.apcGurukulStatus = "";
+      if (!out.whichApc) out.whichApc = "";
+      if (!out.whichGurukul) out.whichGurukul = "";
+      if (!out.apcGurukulFromYear && out.apcGurukulYear) out.apcGurukulFromYear = out.apcGurukulYear;
+      if (!out.apcGurukulFromYear) out.apcGurukulFromYear = "";
+      if (!out.apcGurukulToYear) out.apcGurukulToYear = "";
+      if (!out.exYtk) out.exYtk = "No";
+      if (!out.ytkBatchMonth) out.ytkBatchMonth = "";
+      if (!out.ytkBatchYear) out.ytkBatchYear = "";
+
+      return out;
+    }
+
+    function normalizeMandal(name) {
+      const n = String(name || "").trim();
+      if (!n) return "";
+      const found = MANDALS.find(
+        (m) => m.toLowerCase() === n.toLowerCase() || m.toLowerCase().includes(n.toLowerCase()) || n.toLowerCase().includes(m.toLowerCase().replace(" yuvak mandal", ""))
+      );
+      return found || n;
+    }
+
+    function normalizeExam(val) {
+      const v = String(val || "").trim();
+      if (!v) return "";
+      const aliases = {
+        "Prarambh": ["prarambh", "praramb", "પ્રારંભ"],
+        "Pravesh": ["pravesh", "પ્રવેશ"],
+        "Parichay": ["parichay", "પરિચય"],
+        "Pravin": ["pravin", "પ્રવિણ"],
+        "Pragna 1": ["pragna 1", "pragna-1", "prajna 1", "prajna-1", "pragya 1", "pragya-1", "પ્રાજ્ઞ ૧", "પ્રાજ્ઞ-૧"],
+        "Pragna 2": ["pragna 2", "pragna-2", "prajna 2", "prajna-2", "pragya 2", "pragya-2", "પ્રાજ્ઞ ૨", "પ્રાજ્ઞ-૨"],
+        "Pragna 3": ["pragna 3", "pragna-3", "prajna 3", "prajna-3", "pragya 3", "pragya-3", "pragne 3", "પ્રાજ્ઞ ૩", "પ્રાજ્ઞ-૩"],
+      };
+      const lower = v.toLowerCase();
+      for (const [canonical, list] of Object.entries(aliases)) {
+        if (list.some((a) => lower === a.toLowerCase())) return canonical;
+      }
+      return v;
+    }
+
+    function normalizeYesNo(val) {
+      const v = String(val || "").trim().toLowerCase();
+      if (["yes", "y", "true", "1", "ha", "હા"].includes(v)) return "Yes";
+      return "No";
+    }
+
+    function normalizeKaryakarType(val) {
+      const v = String(val || "").trim().toLowerCase();
+      if (!v) return "";
+      if (v.includes("register")) return "Register Karyakar";
+      if (v.includes("sahsanchalak") || v.includes("sampark")) return "Sahsanchalak/Sampark Karyakar";
+      return String(val).trim();
+    }
+
+    function rowToMember(row, mapping, rowNum) {
+      const get = (field) => {
+        const idx = mapping[field];
+        return idx == null ? "" : row[idx];
+      };
+
+      let firstName = String(get("firstName") || "").trim();
+      let fatherName = String(get("fatherName") || "").trim();
+      let surname = String(get("surname") || "").trim();
+
+      if (!firstName && mapping.name != null) {
+        firstName = String(get("name") || "").trim();
+      }
+      if (!firstName) return null;
+
+      const dob = excelDateToISO(get("dob"));
+      let age = get("age");
+      age = age !== "" && age != null ? String(age).trim() : (dob ? calcAge(dob) : "");
+
+      const isKaryakar = normalizeYesNo(get("isKaryakar"));
+      let karyakarType = normalizeKaryakarType(get("karyakarType"));
+      let designation = String(get("designation") || "").trim();
+
+      if (isKaryakar === "No") {
+        karyakarType = "";
+        designation = "";
+      } else if (karyakarType !== "Register Karyakar") {
+        designation = "";
+      }
+
+      const fatherKaryakar = normalizeYesNo(get("fatherKaryakar"));
+      const motherKaryakar = normalizeYesNo(get("motherKaryakar"));
+      let fatherDesignation = String(get("fatherDesignation") || "").trim();
+      let motherDesignation = String(get("motherDesignation") || "").trim();
+      if (fatherKaryakar === "No") fatherDesignation = "";
+      if (motherKaryakar === "No") motherDesignation = "";
+
+      const apcGurukulStatus = normalizeApcGurukulStatus(get("apcGurukulStatus"));
+      let whichApc = String(get("whichApc") || "").trim();
+      let whichGurukul = String(get("whichGurukul") || "").trim();
+      let apcGurukulFromYear = String(get("apcGurukulFromYear") || get("apcGurukulYear") || "").trim();
+      let apcGurukulToYear = String(get("apcGurukulToYear") || "").trim();
+      if (!isApcStatus(apcGurukulStatus)) whichApc = "";
+      if (!isGurukulStatus(apcGurukulStatus)) whichGurukul = "";
+      if (!isApcStatus(apcGurukulStatus) && !isGurukulStatus(apcGurukulStatus)) {
+        apcGurukulFromYear = "";
+        apcGurukulToYear = "";
+      }
+
+      const exYtk = normalizeYesNo(get("exYtk"));
+      let ytkBatchMonth = String(get("ytkBatchMonth") || "").trim();
+      let ytkBatchYear = String(get("ytkBatchYear") || "").trim();
+      if (exYtk === "No") {
+        ytkBatchMonth = "";
+        ytkBatchYear = "";
+      }
+
+      return {
+        id: Date.now().toString() + "_" + rowNum + "_" + Math.random().toString(36).slice(2, 7),
+        mandal: normalizeMandal(get("mandal")),
+        firstName,
+        fatherName,
+        surname,
+        dob,
+        age,
+        mobile: String(get("mobile") || "").replace(/\D/g, "").slice(0, 10),
+        studyOrJob: normalizeStudyOrJob(get("studyOrJob")) || (get("studyIn") ? "Study" : get("jobIn") ? "Job" : ""),
+        studyIn: String(get("studyIn") || (mapping.jobStudy && !get("jobIn") ? get("jobStudy") : "") || "").trim(),
+        jobIn: String(get("jobIn") || "").trim(),
+        address: String(get("address") || "").trim(),
+        bloodGroup: String(get("bloodGroup") || "").trim().toUpperCase(),
+        satsangExam: normalizeExam(get("satsangExam")),
+        examYear: String(get("examYear") || "").trim(),
+        apcGurukulStatus,
+        whichApc,
+        whichGurukul,
+        apcGurukulFromYear,
+        apcGurukulToYear,
+        exYtk,
+        ytkBatchMonth,
+        ytkBatchYear,
+        fatherSatsangi: normalizeYesNo(get("fatherSatsangi")),
+        motherSatsangi: normalizeYesNo(get("motherSatsangi")),
+        fatherKaryakar,
+        fatherDesignation,
+        motherKaryakar,
+        motherDesignation,
+        attendanceKshetriya: String(get("attendanceKshetriya") || "").trim(),
+        attendanceGosthi: String(get("attendanceGosthi") || "").trim(),
+        attendanceSabha: String(get("attendanceSabha") || "").trim(),
+        isKaryakar,
+        karyakarType,
+        designation,
+        remarks: String(get("remarks") || "").trim(),
+      };
+    }
+
+    function getMemberFromForm() {
+      const isKaryakar = isKaryakarEl.value;
+      const karyakarType = isKaryakar === "Yes" ? karyakarTypeEl.value : "";
+      const designation =
+        isKaryakar === "Yes" && karyakarType === "Register Karyakar"
+          ? designationEl.value.trim()
+          : "";
+
+      return {
+        id: editId.value || Date.now().toString(),
+        mandal: document.getElementById("mandal").value,
+        firstName: document.getElementById("firstName").value.trim(),
+        fatherName: document.getElementById("fatherName").value.trim(),
+        surname: document.getElementById("surname").value.trim(),
+        dob: document.getElementById("dob").value,
+        age: calcAge(document.getElementById("dob").value),
+        mobile: document.getElementById("mobile").value.trim(),
+        studyOrJob: studyOrJobEl.value,
+        studyIn: studyInEl.value.trim(),
+        jobIn: studyOrJobEl.value === "Job" ? jobInEl.value.trim() : "",
+        address: document.getElementById("address").value.trim(),
+        bloodGroup: document.getElementById("bloodGroup").value,
+        satsangExam: document.getElementById("satsangExam").value,
+        examYear: document.getElementById("examYear").value,
+        apcGurukulStatus: apcGurukulStatusEl.value,
+        whichApc: isApcStatus(apcGurukulStatusEl.value) ? whichApcEl.value.trim() : "",
+        whichGurukul: isGurukulStatus(apcGurukulStatusEl.value) ? whichGurukulEl.value.trim() : "",
+        apcGurukulFromYear:
+          isApcStatus(apcGurukulStatusEl.value) || isGurukulStatus(apcGurukulStatusEl.value)
+            ? apcGurukulFromYearEl.value
+            : "",
+        apcGurukulToYear:
+          isApcStatus(apcGurukulStatusEl.value) || isGurukulStatus(apcGurukulStatusEl.value)
+            ? apcGurukulToYearEl.value
+            : "",
+        exYtk: exYtkEl.value,
+        ytkBatchMonth: exYtkEl.value === "Yes" ? ytkBatchMonthEl.value : "",
+        ytkBatchYear: exYtkEl.value === "Yes" ? ytkBatchYearEl.value : "",
+        fatherSatsangi: document.getElementById("fatherSatsangi").value,
+        motherSatsangi: document.getElementById("motherSatsangi").value,
+        fatherKaryakar: fatherKaryakarEl.value,
+        fatherDesignation: fatherKaryakarEl.value === "Yes" ? fatherDesignationEl.value.trim() : "",
+        motherKaryakar: motherKaryakarEl.value,
+        motherDesignation: motherKaryakarEl.value === "Yes" ? motherDesignationEl.value.trim() : "",
+        attendanceKshetriya: document.getElementById("attendanceKshetriya").value,
+        attendanceGosthi: document.getElementById("attendanceGosthi").value,
+        attendanceSabha: document.getElementById("attendanceSabha").value,
+        isKaryakar,
+        karyakarType,
+        designation,
+        remarks: document.getElementById("remarks").value.trim(),
+      };
+    }
+
+    function loadData() {
+      try {
+        return (JSON.parse(localStorage.getItem(STORAGE_KEY)) || []).map(migrateMember);
+      } catch {
+        return [];
+      }
+    }
+
+    function saveData(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function calcAge(dob) {
+      if (!dob) return "";
+      const birth = new Date(dob);
+      if (isNaN(birth)) return "";
+      const today = new Date();
+      let age = today.getFullYear() - birth.getFullYear();
+      const m = today.getMonth() - birth.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+      return age;
+    }
+
+    function formatDate(dob) {
+      if (!dob) return "";
+      const [y, m, d] = dob.split("-");
+      return `${d}-${m}-${y}`;
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 2800);
+    }
+
+    function resetForm() {
+      form.reset();
+      editId.value = "";
+      ageInput.value = "";
+      isKaryakarEl.value = "No";
+      studyOrJobEl.value = "";
+      document.getElementById("fatherSatsangi").value = "No";
+      document.getElementById("motherSatsangi").value = "No";
+      fatherKaryakarEl.value = "No";
+      motherKaryakarEl.value = "No";
+      apcGurukulStatusEl.value = "";
+      exYtkEl.value = "No";
+      updateStudyJobFields();
+      updateApcGurukulYtkFields();
+      updateParentFields();
+      updateKaryakarFields();
+      formTitle.textContent = "Add New Youth (Manual)";
+      submitBtn.textContent = "Save";
+      cancelBtn.style.display = "none";
+    }
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      setTimeout(resetForm, 0);
+    });
+
+    function importExcel() {
+      const fileInput = document.getElementById("excelFile");
+      const resultEl = document.getElementById("importResult");
+      resultEl.className = "import-result";
+      resultEl.textContent = "";
+
+      if (!fileInput.files.length) {
+        alert("Please select an Excel or CSV file.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: "array", cellDates: true });
+          const sheet = workbook.Sheets[workbook.SheetNames[0]];
+          const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "" });
+
+          if (rows.length < 2) {
+            alert("File is empty or has only headers.");
+            return;
+          }
+
+          const mapping = mapHeaders(rows[0]);
+          if (mapping.firstName == null && mapping.name == null) {
+            alert("First Name column not found. Add 'First Name' (or legacy 'Name') in row 1.");
+            return;
+          }
+
+          const imported = [];
+          let skipped = 0;
+          for (let i = 1; i < rows.length; i++) {
+            const member = rowToMember(rows[i], mapping, i);
+            if (member) imported.push(member);
+            else skipped++;
+          }
+
+          if (!imported.length) {
+            alert("No entries imported. Check the First Name column.");
+            return;
+          }
+
+          const append = document.getElementById("appendData").checked;
+          saveData(append ? [...loadData(), ...imported] : imported);
+          renderTable();
+          fileInput.value = "";
+
+          resultEl.className = "import-result ok";
+          resultEl.textContent =
+            `Success! ${imported.length} youth added.` +
+            (skipped ? ` ${skipped} empty rows skipped.` : "") +
+            ` Mapped columns: ${Object.keys(mapping).join(", ")}`;
+          showToast(`${imported.length} entries imported!`);
+        } catch (err) {
+          alert("Error reading file: " + err.message);
+        }
+      };
+      reader.readAsArrayBuffer(fileInput.files[0]);
+    }
+
+    function downloadTemplate() {
+      const sample = [
+        EXPORT_HEADERS,
+        [
+          "Vivekanand Yuvak Mandal",
+          "Rajesh",
+          "Rameshbhai",
+          "Patel",
+          "15-03-2002",
+          "",
+          "9876543210",
+          "Job",
+          "B.Com",
+          "Accountant",
+          "B+",
+          "Pravesh",
+          "2024",
+          "Ex APC",
+          "Surendranagar APC",
+          "",
+          "2018",
+          "2022",
+          "Yes",
+          "June",
+          "2022",
+          "85",
+          "80",
+          "90",
+          "Yes",
+          "Register Karyakar",
+          "Sabha Karyakar",
+          "Yes",
+          "Yes",
+          "Yes",
+          "Sabha Karyakar",
+          "No",
+          "",
+          "Ward No. 5, Surendranagar",
+          "",
+        ],
+      ];
+      const ws = XLSX.utils.aoa_to_sheet(sample);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Youth Data");
+      XLSX.writeFile(wb, "Yuvak_Mandal_Sample.xlsx");
+      showToast("Sample Excel downloaded!");
+    }
+
+    function exportExcel() {
+      const data = getFilteredData();
+      if (!data.length) {
+        alert("No data to download.");
+        return;
+      }
+
+      const rows = data.map((m) => [
+        m.mandal, m.firstName, m.fatherName, m.surname, formatDate(m.dob), m.age, m.mobile,
+        m.studyOrJob, m.studyIn, m.jobIn, m.bloodGroup, m.satsangExam, m.examYear,
+        m.apcGurukulStatus, m.whichApc, m.whichGurukul, m.apcGurukulFromYear, m.apcGurukulToYear,
+        m.exYtk, m.ytkBatchMonth, m.ytkBatchYear,
+        m.attendanceKshetriya, m.attendanceGosthi, m.attendanceSabha,
+        m.isKaryakar, m.karyakarType, m.designation,
+        m.fatherSatsangi, m.motherSatsangi, m.fatherKaryakar, m.fatherDesignation,
+        m.motherKaryakar, m.motherDesignation,
+        m.address, m.remarks,
+      ]);
+
+      const ws = XLSX.utils.aoa_to_sheet([EXPORT_HEADERS, ...rows]);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Youth Data");
+      XLSX.writeFile(wb, "Yuvak_Mandal_Data_" + new Date().toISOString().slice(0, 10) + ".xlsx");
+      showToast("Excel downloaded!");
+    }
+
+    dobInput.addEventListener("change", () => {
+      ageInput.value = calcAge(dobInput.value);
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!studyInEl.value.trim()) {
+        alert("Please enter Study In (education) for all youth.");
+        studyInEl.focus();
+        return;
+      }
+      if (studyOrJobEl.value === "Job" && !jobInEl.value.trim()) {
+        alert("Please enter their job.");
+        jobInEl.focus();
+        return;
+      }
+      if (fatherKaryakarEl.value === "Yes" && !fatherDesignationEl.value.trim()) {
+        alert("Please enter Father's Designation.");
+        fatherDesignationEl.focus();
+        return;
+      }
+      if (motherKaryakarEl.value === "Yes" && !motherDesignationEl.value.trim()) {
+        alert("Please enter Mother's Designation.");
+        motherDesignationEl.focus();
+        return;
+      }
+      const agStatus = apcGurukulStatusEl.value;
+      if (isApcStatus(agStatus) && !whichApcEl.value.trim()) {
+        alert("Please enter Which APC.");
+        whichApcEl.focus();
+        return;
+      }
+      if (isGurukulStatus(agStatus) && !whichGurukulEl.value.trim()) {
+        alert("Please enter Which Gurukul.");
+        whichGurukulEl.focus();
+        return;
+      }
+      if (isApcStatus(agStatus) || isGurukulStatus(agStatus)) {
+        if (!apcGurukulFromYearEl.value || !apcGurukulToYearEl.value) {
+          alert("Please enter APC/Gurukul period — From Year and To Year (e.g. 2018 to 2022).");
+          apcGurukulFromYearEl.focus();
+          return;
+        }
+        const fromY = Number(apcGurukulFromYearEl.value);
+        const toY = Number(apcGurukulToYearEl.value);
+        if (toY < fromY) {
+          alert("To Year must be same as or after From Year.");
+          apcGurukulToYearEl.focus();
+          return;
+        }
+      }
+      if (exYtkEl.value === "Yes" && (!ytkBatchMonthEl.value || !ytkBatchYearEl.value)) {
+        alert("Please enter YTK Batch Month and Year.");
+        ytkBatchMonthEl.focus();
+        return;
+      }
+
+      const data = loadData();
+      const member = getMemberFromForm();
+
+      if (editId.value) {
+        const idx = data.findIndex((m) => m.id === editId.value);
+        if (idx !== -1) data[idx] = member;
+        showToast("Record updated!");
+      } else {
+        data.push(member);
+        showToast("Youth added!");
+      }
+
+      saveData(data);
+      resetForm();
+      renderTable();
+    });
+
+    cancelBtn.addEventListener("click", resetForm);
+
+    function editMember(id) {
+      const member = loadData().find((m) => m.id === id);
+      if (!member) return;
+
+      editId.value = member.id;
+      document.getElementById("mandal").value = member.mandal || "";
+      document.getElementById("firstName").value = member.firstName || "";
+      document.getElementById("fatherName").value = member.fatherName || "";
+      document.getElementById("surname").value = member.surname || "";
+      document.getElementById("dob").value = member.dob || "";
+      ageInput.value = member.age || "";
+      document.getElementById("mobile").value = member.mobile || "";
+      studyOrJobEl.value = member.studyOrJob || "";
+      studyInEl.value = member.studyIn || member.jobStudy || "";
+      jobInEl.value = member.jobIn || "";
+      updateStudyJobFields();
+      document.getElementById("address").value = member.address || "";
+      document.getElementById("bloodGroup").value = member.bloodGroup || "";
+      document.getElementById("satsangExam").value = member.satsangExam || "";
+      document.getElementById("examYear").value = member.examYear || "";
+      apcGurukulStatusEl.value = member.apcGurukulStatus || "";
+      whichApcEl.value = member.whichApc || "";
+      whichGurukulEl.value = member.whichGurukul || "";
+      apcGurukulFromYearEl.value = member.apcGurukulFromYear || member.apcGurukulYear || "";
+      apcGurukulToYearEl.value = member.apcGurukulToYear || "";
+      exYtkEl.value = member.exYtk || "No";
+      ytkBatchMonthEl.value = member.ytkBatchMonth || "";
+      ytkBatchYearEl.value = member.ytkBatchYear || "";
+      updateApcGurukulYtkFields();
+      document.getElementById("fatherSatsangi").value = member.fatherSatsangi || "No";
+      document.getElementById("motherSatsangi").value = member.motherSatsangi || "No";
+      fatherKaryakarEl.value = member.fatherKaryakar || "No";
+      fatherDesignationEl.value = member.fatherDesignation || "";
+      motherKaryakarEl.value = member.motherKaryakar || "No";
+      motherDesignationEl.value = member.motherDesignation || "";
+      updateParentFields();
+      document.getElementById("attendanceKshetriya").value = member.attendanceKshetriya || "";
+      document.getElementById("attendanceGosthi").value = member.attendanceGosthi || "";
+      document.getElementById("attendanceSabha").value = member.attendanceSabha || member.attendance || "";
+      isKaryakarEl.value = member.isKaryakar || "No";
+      karyakarTypeEl.value = member.karyakarType || "";
+      designationEl.value = member.designation || "";
+      document.getElementById("remarks").value = member.remarks || "";
+      updateKaryakarFields();
+
+      formTitle.textContent = "Edit Record";
+      submitBtn.textContent = "Update";
+      cancelBtn.style.display = "inline-block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function deleteMember(id) {
+      if (!confirm("Delete this youth record?")) return;
+      saveData(loadData().filter((m) => m.id !== id));
+      renderTable();
+      showToast("Record deleted.");
+    }
+
+    function getFilteredData() {
+      let data = loadData();
+      const mandal = filterMandal.value;
+      const search = searchName.value.trim().toLowerCase();
+
+      if (mandal) data = data.filter((m) => m.mandal === mandal);
+      if (search) {
+        data = data.filter((m) => fullName(m).toLowerCase().includes(search));
+      }
+
+      return data.sort(
+        (a, b) =>
+          (a.mandal || "").localeCompare(b.mandal || "", "en") ||
+          fullName(a).localeCompare(fullName(b), "en")
+      );
+    }
+
+    function renderTable() {
+      const data = getFilteredData();
+      tableBody.innerHTML = "";
+      emptyMsg.style.display = data.length ? "none" : "block";
+
+      data.forEach((m, i) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${i + 1}</td>
+          <td>${esc(m.mandal)}</td>
+          <td>${esc(m.firstName)}</td>
+          <td>${esc(m.fatherName)}</td>
+          <td>${esc(m.surname)}</td>
+          <td>${formatDate(m.dob)}</td>
+          <td>${esc(m.age)}</td>
+          <td>${esc(m.mobile)}</td>
+          <td>${esc(m.studyIn)}</td>
+          <td>${esc(m.studyOrJob)}</td>
+          <td>${esc(m.jobIn)}</td>
+          <td>${esc(m.address)}</td>
+          <td>${esc(m.bloodGroup)}</td>
+          <td>${esc(m.satsangExam)}</td>
+          <td>${esc(m.examYear)}</td>
+          <td>${esc(m.apcGurukulStatus)}</td>
+          <td>${esc(m.whichApc)}</td>
+          <td>${esc(m.whichGurukul)}</td>
+          <td>${esc(m.apcGurukulFromYear || m.apcGurukulYear)}</td>
+          <td>${esc(m.apcGurukulToYear)}</td>
+          <td>${esc(m.exYtk || "No")}</td>
+          <td>${esc(m.ytkBatchMonth)}</td>
+          <td>${esc(m.ytkBatchYear)}</td>
+          <td>${esc(m.attendanceKshetriya)}</td>
+          <td>${esc(m.attendanceGosthi)}</td>
+          <td>${esc(m.attendanceSabha || m.attendance)}</td>
+          <td>${esc(m.isKaryakar || "No")}</td>
+          <td>${esc(m.karyakarType)}</td>
+          <td>${esc(m.designation)}</td>
+          <td>${esc(m.fatherSatsangi || "No")}</td>
+          <td>${esc(m.motherSatsangi || "No")}</td>
+          <td>${esc(m.fatherKaryakar || "No")}</td>
+          <td>${esc(m.fatherDesignation)}</td>
+          <td>${esc(m.motherKaryakar || "No")}</td>
+          <td>${esc(m.motherDesignation)}</td>
+          <td>${esc(m.remarks)}</td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember('${m.id}')">Edit</button>
+            <button class="btn-danger" onclick="deleteMember('${m.id}')">Delete</button>
+          </td>
+        `;
+        tableBody.appendChild(tr);
+      });
+
+      document.getElementById("totalCount").textContent = loadData().length;
+      document.getElementById("mandalCount").textContent = filterMandal.value ? data.length : "—";
+    }
+
+    function esc(str) {
+      if (!str && str !== 0) return "";
+      const d = document.createElement("div");
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    function clearAllData() {
+      if (!confirm("Permanently delete all data?")) return;
+      if (!confirm("Are you sure? This cannot be undone.")) return;
+      localStorage.removeItem(STORAGE_KEY);
+      renderTable();
+      showToast("All data deleted.");
+    }
+
+    filterMandal.addEventListener("change", renderTable);
+    searchName.addEventListener("input", renderTable);
+
+    initDropdowns();
+    updateStudyJobFields();
+    updateApcGurukulYtkFields();
+    updateParentFields();
+    updateKaryakarFields();
+    renderTable();
+  </script>
+</body>
+</html>
