@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- saved from url=(0045)https://vatspatel1993.github.io/Yuvak-Mandal/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Surendranagar Yuvak Mandal — Data Register</title>
-  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <script src="./index_files/xlsx.full.min.js.download"></script>
   <style>
     :root {
       --bg: #f4f6f9;
@@ -269,7 +269,7 @@
   <div class="container">
     <div class="stats no-print">
       <div class="stat-card">
-        <div class="num" id="totalCount">0</div>
+        <div class="num" id="totalCount">60</div>
         <div class="lbl">Total Youth</div>
       </div>
       <div class="stat-card">
@@ -292,9 +292,9 @@
         Matching columns are detected automatically.
       </p>
       <div class="upload-box">
-        <input type="file" id="excelFile" accept=".xlsx,.xls,.csv" />
+        <input type="file" id="excelFile" accept=".xlsx,.xls,.csv">
         <div class="checkbox-row">
-          <input type="checkbox" id="appendData" checked />
+          <input type="checkbox" id="appendData" checked="">
           <label for="appendData" style="margin:0;font-weight:500;color:var(--text)">
             Keep existing data — add new entries (uncheck = replace all data)
           </label>
@@ -310,40 +310,40 @@
     <div class="card card-entry no-print">
       <h2 id="formTitle">Add New Youth (Manual)</h2>
       <form id="memberForm">
-        <input type="hidden" id="editId" value="" />
+        <input type="hidden" id="editId" value="">
         <div class="form-grid">
           <div class="section-label">Basic Details</div>
           <div>
             <label for="mandal">Mandal Name *</label>
-            <select id="mandal" required></select>
+            <select id="mandal" required=""><option value="">— Select —</option><option value="Vivekanand Yuvak Mandal">Vivekanand Yuvak Mandal</option><option value="Pramukh Swami Maharaj Marg Yuvak Mandal">Pramukh Swami Maharaj Marg Yuvak Mandal</option><option value="Ratanpar Yuvak Mandal">Ratanpar Yuvak Mandal</option><option value="Vadipara Yuvak Mandal">Vadipara Yuvak Mandal</option><option value="Dalmil Yuvak Mandal">Dalmil Yuvak Mandal</option><option value="Wadhwan Yuvak Mandal">Wadhwan Yuvak Mandal</option><option value="Satvarapara Yuvak Mandal">Satvarapara Yuvak Mandal</option><option value="Aksharpurushottam Mandir Yuvak Mandal">Aksharpurushottam Mandir Yuvak Mandal</option></select>
           </div>
           <div>
             <label for="firstName">First Name *</label>
-            <input type="text" id="firstName" required placeholder="Youth first name" />
+            <input type="text" id="firstName" required="" placeholder="Youth first name">
           </div>
           <div>
             <label for="fatherName">Father's Name</label>
-            <input type="text" id="fatherName" placeholder="Father's name" />
+            <input type="text" id="fatherName" placeholder="Father&#39;s name">
           </div>
           <div>
             <label for="surname">Surname</label>
-            <input type="text" id="surname" placeholder="Surname / family name" />
+            <input type="text" id="surname" placeholder="Surname / family name">
           </div>
           <div>
             <label for="dob">Date of Birth *</label>
-            <input type="date" id="dob" required />
+            <input type="date" id="dob" required="">
           </div>
           <div>
             <label for="age">Age</label>
-            <input type="text" id="age" readonly placeholder="Auto" />
+            <input type="text" id="age" readonly="" placeholder="Auto">
           </div>
           <div>
             <label for="mobile">Mobile Number</label>
-            <input type="tel" id="mobile" placeholder="9876543210" maxlength="10" />
+            <input type="tel" id="mobile" placeholder="9876543210" maxlength="10">
           </div>
           <div>
             <label for="studyIn">Study In *</label>
-            <input type="text" id="studyIn" required placeholder="e.g. B.Com, 12th Science (all youth — current or completed study)" />
+            <input type="text" id="studyIn" required="" placeholder="e.g. B.Com, 12th Science (all youth — current or completed study)">
           </div>
           <div>
             <label for="studyOrJob">Currently Study or Job?</label>
@@ -355,7 +355,7 @@
           </div>
           <div id="jobInWrap" class="hidden">
             <label for="jobIn">Job *</label>
-            <input type="text" id="jobIn" placeholder="e.g. Engineer, Teacher, Business" />
+            <input type="text" id="jobIn" placeholder="e.g. Engineer, Teacher, Business">
           </div>
           <div>
             <label for="bloodGroup">Blood Group</label>
@@ -369,11 +369,11 @@
           </div>
           <div>
             <label for="satsangExam">Satsang Shikshan Exam</label>
-            <select id="satsangExam"></select>
+            <select id="satsangExam"><option value="">— Select —</option><option value="Prarambh">Prarambh</option><option value="Pravesh">Pravesh</option><option value="Parichay">Parichay</option><option value="Pravin">Pravin</option><option value="Pragna 1">Pragna 1</option><option value="Pragna 2">Pragna 2</option><option value="Pragna 3">Pragna 3</option></select>
           </div>
           <div>
             <label for="examYear">Exam Year</label>
-            <input type="number" id="examYear" min="1990" max="2035" placeholder="2024" />
+            <input type="number" id="examYear" min="1990" max="2035" placeholder="2024">
           </div>
 
           <div>
@@ -388,22 +388,22 @@
           </div>
           <div id="whichApcWrap" class="hidden">
             <label for="whichApc">Which APC</label>
-            <input type="text" id="whichApc" placeholder="APC name / location" />
+            <input type="text" id="whichApc" placeholder="APC name / location">
           </div>
           <div id="whichGurukulWrap" class="hidden">
             <label for="whichGurukul">Which Gurukul</label>
-            <input type="text" id="whichGurukul" placeholder="Gurukul name / location" />
+            <input type="text" id="whichGurukul" placeholder="Gurukul name / location">
           </div>
-          <div id="apcGurukulPeriodWrap" class="hidden full-width">
+          <div id="apcGurukulPeriodWrap" class="full-width hidden">
             <p class="hint" style="margin:0 0 0.65rem">Study period — typically 3 to 4 years (From Year → To Year)</p>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.85rem">
               <div>
                 <label for="apcGurukulFromYear">From Year *</label>
-                <input type="number" id="apcGurukulFromYear" min="1990" max="2035" placeholder="2018" />
+                <input type="number" id="apcGurukulFromYear" min="1990" max="2035" placeholder="2018">
               </div>
               <div>
                 <label for="apcGurukulToYear">To Year *</label>
-                <input type="number" id="apcGurukulToYear" min="1990" max="2035" placeholder="2022" />
+                <input type="number" id="apcGurukulToYear" min="1990" max="2035" placeholder="2022">
               </div>
             </div>
           </div>
@@ -426,21 +426,21 @@
           </div>
           <div id="ytkBatchYearWrap" class="hidden">
             <label for="ytkBatchYear">YTK Batch Year</label>
-            <input type="number" id="ytkBatchYear" min="1990" max="2035" placeholder="2022" />
+            <input type="number" id="ytkBatchYear" min="1990" max="2035" placeholder="2022">
           </div>
 
           <div class="section-label">Attendance (%)</div>
           <div>
             <label for="attendanceKshetriya">Kshetriya Meeting %</label>
-            <input type="number" id="attendanceKshetriya" min="0" max="100" placeholder="85" />
+            <input type="number" id="attendanceKshetriya" min="0" max="100" placeholder="85">
           </div>
           <div>
             <label for="attendanceGosthi">Gosthi %</label>
-            <input type="number" id="attendanceGosthi" min="0" max="100" placeholder="80" />
+            <input type="number" id="attendanceGosthi" min="0" max="100" placeholder="80">
           </div>
           <div>
             <label for="attendanceSabha">Sabha Attendance %</label>
-            <input type="number" id="attendanceSabha" min="0" max="100" placeholder="90" />
+            <input type="number" id="attendanceSabha" min="0" max="100" placeholder="90">
           </div>
 
           <div class="section-label">Karyakar Details (Youth)</div>
@@ -461,7 +461,7 @@
           </div>
           <div id="designationWrap" class="hidden">
             <label for="designation">Designation (Register Karyakar)</label>
-            <input type="text" id="designation" placeholder="e.g. Sabha Karyakar, Sanchalak" />
+            <input type="text" id="designation" placeholder="e.g. Sabha Karyakar, Sanchalak">
           </div>
 
           <div class="section-label">Parents Details</div>
@@ -488,7 +488,7 @@
           </div>
           <div id="fatherDesignationWrap" class="hidden">
             <label for="fatherDesignation">Father Designation</label>
-            <input type="text" id="fatherDesignation" placeholder="e.g. Sabha Karyakar, Sanchalak" />
+            <input type="text" id="fatherDesignation" placeholder="e.g. Sabha Karyakar, Sanchalak">
           </div>
           <div>
             <label for="motherKaryakar">Mother Karyakar?</label>
@@ -499,7 +499,7 @@
           </div>
           <div id="motherDesignationWrap" class="hidden">
             <label for="motherDesignation">Mother Designation</label>
-            <input type="text" id="motherDesignation" placeholder="e.g. Sabha Karyakar, Mahila Karyakar" />
+            <input type="text" id="motherDesignation" placeholder="e.g. Sabha Karyakar, Mahila Karyakar">
           </div>
 
           <div class="full-width">
@@ -513,7 +513,7 @@
         </div>
         <div class="btn-row">
           <button type="submit" class="btn-primary" id="submitBtn">Save</button>
-          <button type="button" class="btn-secondary" id="cancelBtn" style="display:none">Cancel</button>
+          <button type="button" class="btn-secondary" id="cancelBtn" style="display: none;">Cancel</button>
           <button type="reset" class="btn-secondary" id="resetBtn">Clear Form</button>
         </div>
       </form>
@@ -524,11 +524,11 @@
       <div class="toolbar no-print">
         <div class="field">
           <label for="filterMandal">Filter by Mandal</label>
-          <select id="filterMandal"></select>
+          <select id="filterMandal"><option value="">All Mandals</option><option value="Vivekanand Yuvak Mandal">Vivekanand Yuvak Mandal</option><option value="Pramukh Swami Maharaj Marg Yuvak Mandal">Pramukh Swami Maharaj Marg Yuvak Mandal</option><option value="Ratanpar Yuvak Mandal">Ratanpar Yuvak Mandal</option><option value="Vadipara Yuvak Mandal">Vadipara Yuvak Mandal</option><option value="Dalmil Yuvak Mandal">Dalmil Yuvak Mandal</option><option value="Wadhwan Yuvak Mandal">Wadhwan Yuvak Mandal</option><option value="Satvarapara Yuvak Mandal">Satvarapara Yuvak Mandal</option><option value="Aksharpurushottam Mandir Yuvak Mandal">Aksharpurushottam Mandir Yuvak Mandal</option></select>
         </div>
         <div class="field">
           <label for="searchName">Search by Name</label>
-          <input type="text" id="searchName" placeholder="Type name..." />
+          <input type="text" id="searchName" placeholder="Type name...">
         </div>
         <button class="btn-accent" onclick="exportExcel()">Download Excel</button>
         <button class="btn-secondary" onclick="window.print()">Print</button>
@@ -577,7 +577,2467 @@
               <th class="no-print">Actions</th>
             </tr>
           </thead>
-          <tbody id="tableBody"></tbody>
+          <tbody id="tableBody"><tr>
+          <td>1</td>
+          <td>Dalmil Yuvak Mandal</td>
+          <td>Abhijit</td>
+          <td>Vashudevbhai</td>
+          <td>Kanzariya</td>
+          <td>15-08-2006</td>
+          <td>19</td>
+          <td>9173309686</td>
+          <td>Diploma Mechanical</td>
+          <td>Study</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td>January</td>
+          <td>2026</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_39_29b0j&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_39_29b0j&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>2</td>
+          <td>Dalmil Yuvak Mandal</td>
+          <td>Chirag</td>
+          <td>Vishnubhai</td>
+          <td>Dadtrgiya</td>
+          <td>15-08-2006</td>
+          <td>19</td>
+          <td>9173309686</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_40_eag63&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_40_eag63&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>3</td>
+          <td>Dalmil Yuvak Mandal</td>
+          <td>Divyarajsinh</td>
+          <td>Anirudhasinh</td>
+          <td>Borana</td>
+          <td>07-12-2000</td>
+          <td>25</td>
+          <td>9773014514</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_41_tpvsk&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_41_tpvsk&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>4</td>
+          <td>Dalmil Yuvak Mandal</td>
+          <td>Jeet</td>
+          <td>Bhavikbhai</td>
+          <td>Chauhan</td>
+          <td>15-08-2003</td>
+          <td>22</td>
+          <td>7984171384</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_42_mubbf&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_42_mubbf&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>5</td>
+          <td>Dalmil Yuvak Mandal</td>
+          <td>Ketan</td>
+          <td>Vashudevbhai</td>
+          <td>Kanzariya</td>
+          <td>20-07-2001</td>
+          <td>24</td>
+          <td>9913257182</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_44_0956r&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_44_0956r&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>6</td>
+          <td>Dalmil Yuvak Mandal</td>
+          <td>Kuldeepsinh</td>
+          <td>Mahendrasinh</td>
+          <td>Jadeja</td>
+          <td>17-08-2009</td>
+          <td>16</td>
+          <td>9913309686</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_45_gq1eo&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_45_gq1eo&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>7</td>
+          <td>Dalmil Yuvak Mandal</td>
+          <td>KULDIPSINH</td>
+          <td>ANIRUDHASINH</td>
+          <td>BORANA</td>
+          <td>26-01-2009</td>
+          <td>17</td>
+          <td>9904394228</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_43_vr399&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_43_vr399&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>8</td>
+          <td>Dalmil Yuvak Mandal</td>
+          <td>NIRAV</td>
+          <td>BHARAT BHAI</td>
+          <td>MANDALIYA</td>
+          <td>16-01-2003</td>
+          <td>23</td>
+          <td>9510891591</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_46_hswif&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_46_hswif&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>9</td>
+          <td>Dalmil Yuvak Mandal</td>
+          <td>Prince</td>
+          <td>Bharat bhai</td>
+          <td>Sabhani</td>
+          <td>02-09-1984</td>
+          <td>41</td>
+          <td>9924446055</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_47_esrxh&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_47_esrxh&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>10</td>
+          <td>Pramukh Swami Maharaj Marg Yuvak Mandal</td>
+          <td>Akshay</td>
+          <td>Shaileshbhai</td>
+          <td>Soni</td>
+          <td>01-06-2000</td>
+          <td>26</td>
+          <td>9409670110</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_3_h9w8t&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_3_h9w8t&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>11</td>
+          <td>Pramukh Swami Maharaj Marg Yuvak Mandal</td>
+          <td>Jenish</td>
+          <td>Manishbhai</td>
+          <td>Devaiya</td>
+          <td>13-12-2007</td>
+          <td>18</td>
+          <td>9898388064</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_5_p8oxx&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_5_p8oxx&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>12</td>
+          <td>Pramukh Swami Maharaj Marg Yuvak Mandal</td>
+          <td>Kirtan</td>
+          <td>Sureshkumar</td>
+          <td>Santoki</td>
+          <td>12-05-2005</td>
+          <td>21</td>
+          <td>9328869698</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_6_2mfir&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_6_2mfir&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>13</td>
+          <td>Pramukh Swami Maharaj Marg Yuvak Mandal</td>
+          <td>Meet</td>
+          <td>Mahendra</td>
+          <td>Motka</td>
+          <td>07-10-1999</td>
+          <td>26</td>
+          <td>7874724777</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_7_c0wkz&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_7_c0wkz&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>14</td>
+          <td>Pramukh Swami Maharaj Marg Yuvak Mandal</td>
+          <td>Priyansh</td>
+          <td>Umeshkumar</td>
+          <td>Liya</td>
+          <td>22-04-2005</td>
+          <td>21</td>
+          <td>9426217608</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_8_qkhr1&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_8_qkhr1&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>15</td>
+          <td>Pramukh Swami Maharaj Marg Yuvak Mandal</td>
+          <td>Sanjay</td>
+          <td>Ghanshyambhai</td>
+          <td>Golani</td>
+          <td>14-08-2003</td>
+          <td>22</td>
+          <td>9998805759</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_9_qoy59&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_9_qoy59&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>16</td>
+          <td>Pramukh Swami Maharaj Marg Yuvak Mandal</td>
+          <td>Swapnilkumar</td>
+          <td>Bipinchandra</td>
+          <td>Patel</td>
+          <td>15-03-1991</td>
+          <td>35</td>
+          <td>9408616054</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_10_8x8cs&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_10_8x8cs&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>17</td>
+          <td>Pramukh Swami Maharaj Marg Yuvak Mandal</td>
+          <td>Vandan</td>
+          <td>Amitbhai</td>
+          <td>Surani</td>
+          <td>04-09-2007</td>
+          <td>18</td>
+          <td>9327668963</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_11_s72g7&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_11_s72g7&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>18</td>
+          <td>Pramukh Swami Maharaj Marg Yuvak Mandal</td>
+          <td>Vats</td>
+          <td>Vinodbhai</td>
+          <td>Patel</td>
+          <td>26-04-1993</td>
+          <td>33</td>
+          <td>9825739433</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_12_spijj&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_12_spijj&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>19</td>
+          <td>Pramukh Swami Maharaj Marg Yuvak Mandal</td>
+          <td>ved</td>
+          <td>Ashishbhai</td>
+          <td>Patel</td>
+          <td>20-05-2010</td>
+          <td>16</td>
+          <td>7383854746</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_2_derkg&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_2_derkg&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>20</td>
+          <td>Pramukh Swami Maharaj Marg Yuvak Mandal</td>
+          <td>Yogi</td>
+          <td>Piyushbhai</td>
+          <td>Jesadiya</td>
+          <td>07-10-2005</td>
+          <td>20</td>
+          <td>7069699996</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_13_c6vyn&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_13_c6vyn&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>21</td>
+          <td>Pramukh Swami Maharaj Marg Yuvak Mandal</td>
+          <td>Yuvrajsinh</td>
+          <td>Dipendrasinh</td>
+          <td>JADEJA</td>
+          <td>25-02-2003</td>
+          <td>23</td>
+          <td>6353127456</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_14_ghyda&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_14_ghyda&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>22</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>BHAVIK</td>
+          <td>DHANJIBHAI</td>
+          <td>GOLANI</td>
+          <td>10-05-1993</td>
+          <td>33</td>
+          <td>8866285831</td>
+          <td>BE EC</td>
+          <td>Job</td>
+          <td>Wireless ASI</td>
+          <td>Aumkar Park, New Darshan Shool ni same, Ratanpar</td>
+          <td></td>
+          <td>Pravin</td>
+          <td>2026</td>
+          <td>Ex APC</td>
+          <td>Mehsana</td>
+          <td></td>
+          <td>2010</td>
+          <td>2014</td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Yes</td>
+          <td>Register Karyakar</td>
+          <td>Yuva Nirdeshak</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_4_hpo88&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_4_hpo88&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>23</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Dhyey</td>
+          <td>Kamleshbhai</td>
+          <td>Ramani</td>
+          <td>09-09-2008</td>
+          <td>17</td>
+          <td>9925024654</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_50_ld9i5&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_50_ld9i5&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>24</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Divy</td>
+          <td>Alpeshbhai</td>
+          <td>Patel</td>
+          <td>07-07-2007</td>
+          <td>18</td>
+          <td>9081517758</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_51_b4gi6&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_51_b4gi6&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>25</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Jay</td>
+          <td>NayanBhai</td>
+          <td>Sojitra</td>
+          <td>16-03-2007</td>
+          <td>19</td>
+          <td>9510758906</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_52_9ztxc&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_52_9ztxc&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>26</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Jayantibhai</td>
+          <td>Devjibhai</td>
+          <td>Garambha</td>
+          <td>05-02-1989</td>
+          <td>37</td>
+          <td>9979001520</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_53_2zbt6&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_53_2zbt6&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>27</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Keyurbhai</td>
+          <td>Shaileshbhai</td>
+          <td>Patel</td>
+          <td>20-10-2008</td>
+          <td>17</td>
+          <td>9737564837</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_54_rud3d&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_54_rud3d&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>28</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Nisarg</td>
+          <td>Jayeshbhai</td>
+          <td>Golani</td>
+          <td>29-01-2011</td>
+          <td>15</td>
+          <td>9824594082</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_55_5s2un&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_55_5s2un&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>29</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Priyank</td>
+          <td>Mehulbhai</td>
+          <td>Soni</td>
+          <td>12-02-2001</td>
+          <td>25</td>
+          <td>7623995520</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_56_ehp1r&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_56_ehp1r&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>30</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Purvak</td>
+          <td>Mehulbhai</td>
+          <td>Soni</td>
+          <td>21-04-2005</td>
+          <td>21</td>
+          <td>7359475700</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_57_c5249&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_57_c5249&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>31</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Raghuvirsinh</td>
+          <td>Chandrasinh</td>
+          <td>Gohil</td>
+          <td>11-04-1998</td>
+          <td>28</td>
+          <td>7043276837</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_58_95gw7&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_58_95gw7&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>32</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Randhirsinh</td>
+          <td>Harishchandrasinh</td>
+          <td>Chudasama</td>
+          <td>29-10-1981</td>
+          <td>44</td>
+          <td>9328781435</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_59_nwbja&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_59_nwbja&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>33</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Vats</td>
+          <td>Vinodbhai</td>
+          <td>Patel</td>
+          <td>26-04-1993</td>
+          <td>33</td>
+          <td>9825739433</td>
+          <td>B.E. Mechanical</td>
+          <td>Job</td>
+          <td>District Panchayat Surebdranagar</td>
+          <td>Tirth Darshan Residency, Near Malod Chokdi, Ratanpar</td>
+          <td>AB+</td>
+          <td>Pravin</td>
+          <td>2026</td>
+          <td>Ex APC</td>
+          <td>Mehsana</td>
+          <td></td>
+          <td>2010</td>
+          <td>2014</td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>100</td>
+          <td>100</td>
+          <td>100</td>
+          <td>Yes</td>
+          <td>Register Karyakar</td>
+          <td>Xetriya Karyalay Sanchalak</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Yes</td>
+          <td>Sampark Karyakar</td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781160513904&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781160513904&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>34</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Vishalbhai</td>
+          <td>Sureshbhai</td>
+          <td>Kalotra</td>
+          <td>05-10-1993</td>
+          <td>32</td>
+          <td>8866153301</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_60_eu9fj&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_60_eu9fj&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>35</td>
+          <td>Ratanpar Yuvak Mandal</td>
+          <td>Yogesh</td>
+          <td>Ghanshyam bhai</td>
+          <td>Makwana</td>
+          <td>22-10-1986</td>
+          <td>39</td>
+          <td>9824831929</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_61_3kg8v&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_61_3kg8v&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>36</td>
+          <td>Vadipara Yuvak Mandal</td>
+          <td>Alpes</td>
+          <td>Arvind bhai</td>
+          <td>Mandaliya</td>
+          <td>23-04-1982</td>
+          <td>44</td>
+          <td>9428329703</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_63_vcv61&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_63_vcv61&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>37</td>
+          <td>Vadipara Yuvak Mandal</td>
+          <td>Sairaj</td>
+          <td>Rajubhai</td>
+          <td>Jogesh</td>
+          <td>01-12-1999</td>
+          <td>26</td>
+          <td>7878211121</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_64_s71ew&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_64_s71ew&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>38</td>
+          <td>Vadipara Yuvak Mandal</td>
+          <td>Shashank</td>
+          <td>Ketanbhai</td>
+          <td>Chanpura</td>
+          <td>14-11-2002</td>
+          <td>23</td>
+          <td>9316539899</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_65_kh3ev&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_65_kh3ev&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>39</td>
+          <td>Vadipara Yuvak Mandal</td>
+          <td>Vikas</td>
+          <td>Urvishbhai</td>
+          <td>Baraiya</td>
+          <td>03-09-2007</td>
+          <td>18</td>
+          <td>8401403130</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_66_ae8xy&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_66_ae8xy&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>40</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Akshar</td>
+          <td>Dinesh bhai</td>
+          <td>Gohil</td>
+          <td>02-12-2006</td>
+          <td>19</td>
+          <td>9909484059</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_17_45xzi&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_17_45xzi&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>41</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Akshar</td>
+          <td>Yogeshbhai</td>
+          <td>Pujara</td>
+          <td>30-03-2006</td>
+          <td>20</td>
+          <td>9879756614</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_16_96kl7&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_16_96kl7&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>42</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Ankit</td>
+          <td>Pravinbhai</td>
+          <td>Parmar</td>
+          <td>20-08-1992</td>
+          <td>33</td>
+          <td>9998922952</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_18_lx9yv&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_18_lx9yv&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>43</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Archan</td>
+          <td>ShaileshBhai</td>
+          <td>Gandhi</td>
+          <td>14-08-2006</td>
+          <td>19</td>
+          <td>6355636885</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_27_vpjaq&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_27_vpjaq&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>44</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>BHARGAV</td>
+          <td>JAYESHKUMAR</td>
+          <td>CHAUHAN</td>
+          <td>14-04-2001</td>
+          <td>25</td>
+          <td>8487840916</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_19_lz0cg&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_19_lz0cg&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>45</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>BHAVIN</td>
+          <td>KIRITKUMAR</td>
+          <td>CHAUHAN</td>
+          <td>21-11-1990</td>
+          <td>35</td>
+          <td>9714064644</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_20_qj0mx&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_20_qj0mx&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>46</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Bhishm</td>
+          <td>Hasmukhbhai</td>
+          <td>Daslaniya</td>
+          <td>19-09-1999</td>
+          <td>26</td>
+          <td>9173767167</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_21_3dbbb&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_21_3dbbb&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>47</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Devang</td>
+          <td>Vinodbhai</td>
+          <td>Davda</td>
+          <td>06-06-2002</td>
+          <td>24</td>
+          <td>9099922292</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_23_62hh6&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_23_62hh6&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>48</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>DEVARSHI</td>
+          <td>NARENDRABHAI</td>
+          <td>CHETTA</td>
+          <td>09-07-2004</td>
+          <td>21</td>
+          <td>8200543033</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_22_fj63g&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_22_fj63g&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>49</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Dhruvrajsinh</td>
+          <td>Narendrasinh</td>
+          <td>Parmar</td>
+          <td>09-05-2004</td>
+          <td>22</td>
+          <td>8758010609</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_24_9b7ja&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_24_9b7ja&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>50</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Dipen</td>
+          <td>Dhirajlal</td>
+          <td>Davda</td>
+          <td>02-06-1995</td>
+          <td>31</td>
+          <td>9998994554</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_25_2ob0s&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_25_2ob0s&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>51</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Hiren</td>
+          <td>Jitubhai</td>
+          <td>Chauhan</td>
+          <td>05-12-2000</td>
+          <td>25</td>
+          <td>8153886907</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_28_7nlwh&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_28_7nlwh&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>52</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Jimil</td>
+          <td>Dilipbhai</td>
+          <td>Depala</td>
+          <td>24-09-1996</td>
+          <td>29</td>
+          <td>9033315468</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_29_udzoe&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_29_udzoe&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>53</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Krish</td>
+          <td>JastinBhai</td>
+          <td>Solanki</td>
+          <td>29-10-2010</td>
+          <td>15</td>
+          <td>9714643249</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_35_mmtt1&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_35_mmtt1&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>54</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>MAULIK</td>
+          <td>VIJAYBHAI</td>
+          <td>Pathak</td>
+          <td>02-01-1994</td>
+          <td>32</td>
+          <td>9265982875</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_30_b4ium&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_30_b4ium&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>55</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Nirav</td>
+          <td>Priteshbhai</td>
+          <td>Fichadiya</td>
+          <td>09-08-2008</td>
+          <td>17</td>
+          <td>9099320039</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_26_i0rgj&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_26_i0rgj&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>56</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>SACHIN</td>
+          <td>CHANDRAKANTBHAI</td>
+          <td>DASADIYA</td>
+          <td>26-04-1995</td>
+          <td>31</td>
+          <td>9427709480</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_31_q7c7r&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_31_q7c7r&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>57</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Shyam</td>
+          <td>Chandubhai</td>
+          <td>Parmar</td>
+          <td>14-11-2002</td>
+          <td>23</td>
+          <td>9313486070</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_32_kz1xu&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_32_kz1xu&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>58</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Siddharth</td>
+          <td>Kishorbhai</td>
+          <td>Adeshwari</td>
+          <td>22-12-2001</td>
+          <td>24</td>
+          <td>7359765853</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_33_9a2sz&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_33_9a2sz&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>59</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Smih</td>
+          <td>Dimpalbhai</td>
+          <td>Solanki</td>
+          <td>10-11-2005</td>
+          <td>20</td>
+          <td>9624112528</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_34_txzzk&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_34_txzzk&#39;)">Delete</button>
+          </td>
+        </tr><tr>
+          <td>60</td>
+          <td>Vivekanand Yuvak Mandal</td>
+          <td>Uttam</td>
+          <td>Bhagvan bhai</td>
+          <td>Pedhadiya</td>
+          <td>04-11-2001</td>
+          <td>24</td>
+          <td>9328786953</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td></td>
+          <td>No</td>
+          <td></td>
+          <td></td>
+          <td class="actions no-print">
+            <button class="btn-primary" onclick="editMember(&#39;1781173362449_36_7ys31&#39;)">Edit</button>
+            <button class="btn-danger" onclick="deleteMember(&#39;1781173362449_36_7ys31&#39;)">Delete</button>
+          </td>
+        </tr></tbody>
         </table>
         <div class="empty-msg" id="emptyMsg" style="display:none">
           No data yet. Add manually or upload an Excel file.
@@ -586,7 +3046,7 @@
     </div>
   </div>
 
-  <div class="toast" id="toast"></div>
+  <div class="toast" id="toast">Excel downloaded!</div>
 
   <script>
     const STORAGE_KEY = "yuvakMandalData_v3";
@@ -1524,5 +3984,6 @@
     updateKaryakarFields();
     renderTable();
   </script>
-</body>
-</html>
+
+
+</body></html>
