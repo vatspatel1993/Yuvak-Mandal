@@ -436,16 +436,17 @@
             <input type="text" id="studyIn" required placeholder="e.g. B.Com, 12th Science (all youth — current or completed study)" />
           </div>
           <div>
-            <label for="studyOrJob">Currently Study or Job?</label>
+            <label for="studyOrJob">Currently Study / Job / Business?</label>
             <select id="studyOrJob">
               <option value="">— Select —</option>
               <option value="Study">Study</option>
               <option value="Job">Job</option>
+              <option value="Business">Business</option>
             </select>
           </div>
           <div id="jobInWrap" class="hidden">
-            <label for="jobIn">Job *</label>
-            <input type="text" id="jobIn" placeholder="e.g. Engineer, Teacher, Business" />
+            <label for="jobIn">Job / Business Details *</label>
+            <input type="text" id="jobIn" placeholder="e.g. Engineer, Teacher, Business, Shopkeeper" />
           </div>
           <div>
             <label for="bloodGroup">Blood Group</label>
@@ -642,8 +643,8 @@
               <th>Age</th>
               <th>Mobile</th>
               <th>Study In</th>
-              <th>Study/Job</th>
-              <th>Job</th>
+              <th>Study/Job/Business</th>
+              <th>Job/Business Details</th>
               <th>Address</th>
               <th>Blood</th>
               <th>Satsang Exam</th>
@@ -709,7 +710,7 @@
 
     const EXPORT_HEADERS = [
       "Mandal", "First Name", "Father's Name", "Surname", "Date of Birth", "Age", "Mobile",
-      "Study or Job", "Study In", "Job", "Blood Group", "Satsang Exam", "Exam Year",
+      "Study / Job / Business", "Study In", "Job/Business Details", "Blood Group", "Satsang Exam", "Exam Year",
       "APC/Gurukul Status", "Which APC", "Which Gurukul", "APC/Gurukul From Year", "APC/Gurukul To Year",
       "Ex YTK", "YTK Batch Month", "YTK Batch Year",
       "Kshetriya Meeting %", "Gosthi %", "Sabha Attendance %",
@@ -728,9 +729,9 @@
       dob: ["date of birth", "dob", "birth date", "birthdate"],
       age: ["age"],
       mobile: ["mobile", "mobile number", "phone", "contact"],
-      studyOrJob: ["study or job", "study/job", "education or job", "type"],
+      studyOrJob: ["study or job", "study/job", "education or job", "type", "study / job / business"],
       studyIn: ["study in", "studying", "education", "study", "course", "degree"],
-      jobIn: ["job", "job in", "occupation", "work", "profession"],
+      jobIn: ["job", "job in", "occupation", "work", "profession", "business", "business details"],
       jobStudy: ["education/job", "education job"],
       address: ["address", "addr"],
       bloodGroup: ["blood group", "blood", "bloodgroup"],
@@ -924,9 +925,11 @@
 
     function updateStudyJobFields() {
       const type = studyOrJobEl.value;
-      document.getElementById("jobInWrap").classList.toggle("hidden", type !== "Job");
-      jobInEl.required = type === "Job";
-      if (type !== "Job") jobInEl.value = "";
+      // Job અથવા Business માટે jobIn ફીલ્ડ બતાવો
+      const showJobField = type === "Job" || type === "Business";
+      document.getElementById("jobInWrap").classList.toggle("hidden", !showJobField);
+      jobInEl.required = showJobField;
+      if (!showJobField) jobInEl.value = "";
     }
 
     studyOrJobEl.addEventListener("change", updateStudyJobFields);
@@ -935,6 +938,7 @@
       const v = String(val || "").trim().toLowerCase();
       if (v === "study" || v === "studying" || v === "education") return "Study";
       if (v === "job" || v === "work" || v === "working") return "Job";
+      if (v === "business" || v === "businessman" || v === "businesswoman" || v === "self employed" || v === "self-employed") return "Business";
       return "";
     }
 
@@ -1215,7 +1219,7 @@
         mobile: document.getElementById("mobile").value.trim(),
         studyOrJob: studyOrJobEl.value,
         studyIn: studyInEl.value.trim(),
-        jobIn: studyOrJobEl.value === "Job" ? jobInEl.value.trim() : "",
+        jobIn: (studyOrJobEl.value === "Job" || studyOrJobEl.value === "Business") ? jobInEl.value.trim() : "",
         address: document.getElementById("address").value.trim(),
         bloodGroup: document.getElementById("bloodGroup").value,
         satsangExam: document.getElementById("satsangExam").value,
@@ -1385,9 +1389,9 @@
           "15-03-2002",
           "",
           "9876543210",
-          "Job",
+          "Business",
           "B.Com",
-          "Accountant",
+          "Shopkeeper",
           "B+",
           "Pravesh",
           "2024",
@@ -1463,11 +1467,14 @@
         studyInEl.focus();
         return;
       }
-      if (studyOrJobEl.value === "Job" && !jobInEl.value.trim()) {
-        alert("Please enter their job.");
+
+      const studyOrJobValue = studyOrJobEl.value;
+      if ((studyOrJobValue === "Job" || studyOrJobValue === "Business") && !jobInEl.value.trim()) {
+        alert("Please enter their Job or Business details.");
         jobInEl.focus();
         return;
       }
+
       if (fatherKaryakarEl.value === "Yes" && !fatherDesignationEl.value.trim()) {
         alert("Please enter Father's Designation.");
         fatherDesignationEl.focus();
