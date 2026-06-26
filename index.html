@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -382,8 +383,8 @@
             <input type="text" id="surname" placeholder="Surname / family name" />
           </div>
           <div>
-            <label for="dob">Date of Birth *</label>
-            <input type="date" id="dob" required />
+            <label for="dob">Date of Birth * (dd-mm-yyyy)</label>
+            <input type="text" id="dob" required placeholder="dd-mm-yyyy" maxlength="10" />
           </div>
           <div>
             <label for="age">Age</label>
@@ -1105,6 +1106,15 @@
       const isKaryakar = isKaryakarEl.value;
       const karyakarNumber = isKaryakar === "Yes" ? karyakarNumberEl.value.trim() : "";
       const designation = isKaryakar === "Yes" ? designationEl.value.trim() : "";
+      
+      // DOB ને yyyy-mm-dd માં કન્વર્ટ કરો (યુઝર dd-mm-yyyy ટાઈપ કરે છે)
+      let dobValue = document.getElementById("dob").value;
+      if (dobValue && dobValue.includes('-')) {
+        const parts = dobValue.split('-');
+        if (parts.length === 3 && parts[2].length === 4) {
+          dobValue = `${parts[2]}-${parts[1]}-${parts[0]}`;
+        }
+      }
 
       return {
         id: editId.value || Date.now().toString(),
@@ -1112,8 +1122,8 @@
         firstName: document.getElementById("firstName").value.trim(),
         fatherName: document.getElementById("fatherName").value.trim(),
         surname: document.getElementById("surname").value.trim(),
-        dob: document.getElementById("dob").value,
-        age: calcAge(document.getElementById("dob").value),
+        dob: dobValue,
+        age: calcAge(dobValue),
         mobile: document.getElementById("mobile").value.trim(),
         studyOrJob: studyOrJobEl.value,
         studyIn: studyInEl.value.trim(),
@@ -1166,7 +1176,11 @@
 
     function calcAge(dob) {
       if (!dob) return "";
-      const birth = new Date(dob);
+      // dd-mm-yyyy ને yyyy-mm-dd માં કન્વર્ટ કરો
+      const parts = dob.split('-');
+      if (parts.length !== 3) return "";
+      const dateStr = `${parts[2]}-${parts[1]}-${parts[0]}`;
+      const birth = new Date(dateStr);
       if (isNaN(birth)) return "";
       const today = new Date();
       let age = today.getFullYear() - birth.getFullYear();
@@ -1354,6 +1368,27 @@
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
+      // DOB ફોર્મેટ ચકાસો
+      const dobValue = document.getElementById("dob").value;
+      if (dobValue) {
+        const parts = dobValue.split('-');
+        if (parts.length !== 3 || parts[0].length !== 2 || parts[1].length !== 2 || parts[2].length !== 4) {
+          alert('Date of Birth must be in dd-mm-yyyy format (e.g. 26-06-2026)');
+          document.getElementById("dob").focus();
+          return;
+        }
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const year = parseInt(parts[2], 10);
+        const dateObj = new Date(year, month, day);
+        if (dateObj.getDate() !== day || dateObj.getMonth() !== month || dateObj.getFullYear() !== year) {
+          alert('Please enter a valid date in dd-mm-yyyy format.');
+          document.getElementById("dob").focus();
+          return;
+        }
+      }
+
       if (!studyInEl.value.trim()) {
         alert("Please enter Study In (education) for all youth.");
         studyInEl.focus();
@@ -1443,7 +1478,7 @@
       document.getElementById("firstName").value = member.firstName || "";
       document.getElementById("fatherName").value = member.fatherName || "";
       document.getElementById("surname").value = member.surname || "";
-      document.getElementById("dob").value = member.dob || "";
+      document.getElementById("dob").value = member.dob ? formatDate(member.dob) : "";
       ageInput.value = member.age || "";
       document.getElementById("mobile").value = member.mobile || "";
       studyOrJobEl.value = member.studyOrJob || "";
