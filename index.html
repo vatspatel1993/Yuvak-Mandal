@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,6 +112,36 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 0.85rem;
+    }
+
+    .dob-wrapper {
+      display: flex;
+      gap: 0.5rem;
+      align-items: end;
+    }
+
+    .dob-wrapper > div {
+      flex: 1;
+    }
+
+    .dob-wrapper button {
+      padding: 0.55rem 0.75rem;
+      margin-bottom: 0.1rem;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dob-wrapper button:hover {
+      opacity: 0.85;
     }
 
     label {
@@ -310,6 +339,8 @@
     @media (max-width: 600px) {
       header h1 { font-size: 1.2rem; }
       th, td { font-size: 0.75rem; padding: 0.35rem; }
+      .dob-wrapper { flex-direction: column; }
+      .dob-wrapper button { height: auto; padding: 0.55rem; }
     }
   </style>
 </head>
@@ -384,7 +415,13 @@
           </div>
           <div>
             <label for="dob">Date of Birth * (dd-mm-yyyy)</label>
-            <input type="text" id="dob" required placeholder="dd-mm-yyyy" maxlength="10" />
+            <div class="dob-wrapper">
+              <div>
+                <input type="text" id="dob" required placeholder="dd-mm-yyyy" maxlength="10" />
+              </div>
+              <button type="button" id="dobPickerBtn" title="Select date from calendar">📅</button>
+            </div>
+            <input type="date" id="dobHidden" style="display:none;" />
           </div>
           <div>
             <label for="age">Age</label>
@@ -733,6 +770,7 @@
     const filterMandal = document.getElementById("filterMandal");
     const searchName = document.getElementById("searchName");
     const dobInput = document.getElementById("dob");
+    const dobHidden = document.getElementById("dobHidden");
     const ageInput = document.getElementById("age");
     const isKaryakarEl = document.getElementById("isKaryakar");
     const karyakarNumberEl = document.getElementById("karyakarNumber");
@@ -752,6 +790,62 @@
     const exYtkEl = document.getElementById("exYtk");
     const ytkBatchMonthEl = document.getElementById("ytkBatchMonth");
     const ytkBatchYearEl = document.getElementById("ytkBatchYear");
+
+    // ===== DOB AUTO-FORMAT + CALENDAR PICKER =====
+    dobInput.addEventListener('input', function(e) {
+      let value = this.value.replace(/\D/g, '');
+      if (value.length > 8) value = value.slice(0, 8);
+      
+      let formatted = '';
+      if (value.length > 0) {
+        formatted += value.slice(0, 2);
+        if (value.length >= 2) {
+          formatted += '-';
+          formatted += value.slice(2, 4);
+          if (value.length >= 4) {
+            formatted += '-';
+            formatted += value.slice(4, 8);
+          }
+        }
+      }
+      this.value = formatted;
+      
+      // Store yyyy-mm-dd in hidden field
+      if (value.length === 8) {
+        const dd = value.slice(0, 2);
+        const mm = value.slice(2, 4);
+        const yyyy = value.slice(4, 8);
+        dobHidden.value = `${yyyy}-${mm}-${dd}`;
+        ageInput.value = calcAge(dobHidden.value);
+      } else {
+        dobHidden.value = '';
+        ageInput.value = '';
+      }
+    });
+
+    // Calendar picker button
+    document.getElementById('dobPickerBtn').addEventListener('click', function() {
+      if (dobHidden) {
+        if (dobHidden.showPicker) {
+          dobHidden.showPicker();
+        } else {
+          dobHidden.click();
+        }
+      }
+    });
+
+    // When date is selected from calendar
+    dobHidden.addEventListener('change', function() {
+      if (this.value) {
+        const parts = this.value.split('-');
+        if (parts.length === 3) {
+          dobInput.value = `${parts[2]}-${parts[1]}-${parts[0]}`;
+          ageInput.value = calcAge(this.value);
+        }
+      }
+    });
+
+    // ===== END DOB AUTO-FORMAT =====
 
     function isApcStatus(status) {
       return status === "Ex APC" || status === "Current Study in APC";
@@ -1106,15 +1200,9 @@
       const isKaryakar = isKaryakarEl.value;
       const karyakarNumber = isKaryakar === "Yes" ? karyakarNumberEl.value.trim() : "";
       const designation = isKaryakar === "Yes" ? designationEl.value.trim() : "";
-      
-      // DOB ને yyyy-mm-dd માં કન્વર્ટ કરો (યુઝર dd-mm-yyyy ટાઈપ કરે છે)
-      let dobValue = document.getElementById("dob").value;
-      if (dobValue && dobValue.includes('-')) {
-        const parts = dobValue.split('-');
-        if (parts.length === 3 && parts[2].length === 4) {
-          dobValue = `${parts[2]}-${parts[1]}-${parts[0]}`;
-        }
-      }
+
+      // DOB from hidden field (yyyy-mm-dd)
+      const dobValue = dobHidden.value;
 
       return {
         id: editId.value || Date.now().toString(),
@@ -1176,11 +1264,7 @@
 
     function calcAge(dob) {
       if (!dob) return "";
-      // dd-mm-yyyy ને yyyy-mm-dd માં કન્વર્ટ કરો
-      const parts = dob.split('-');
-      if (parts.length !== 3) return "";
-      const dateStr = `${parts[2]}-${parts[1]}-${parts[0]}`;
-      const birth = new Date(dateStr);
+      const birth = new Date(dob);
       if (isNaN(birth)) return "";
       const today = new Date();
       let age = today.getFullYear() - birth.getFullYear();
@@ -1205,6 +1289,8 @@
     function resetForm() {
       form.reset();
       editId.value = "";
+      dobInput.value = "";
+      dobHidden.value = "";
       ageInput.value = "";
       isKaryakarEl.value = "No";
       studyOrJobEl.value = "";
@@ -1362,31 +1448,14 @@
       showToast("Excel downloaded!");
     }
 
-    dobInput.addEventListener("change", () => {
-      ageInput.value = calcAge(dobInput.value);
-    });
-
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      // DOB ફોર્મેટ ચકાસો
-      const dobValue = document.getElementById("dob").value;
-      if (dobValue) {
-        const parts = dobValue.split('-');
-        if (parts.length !== 3 || parts[0].length !== 2 || parts[1].length !== 2 || parts[2].length !== 4) {
-          alert('Date of Birth must be in dd-mm-yyyy format (e.g. 26-06-2026)');
-          document.getElementById("dob").focus();
-          return;
-        }
-        const day = parseInt(parts[0], 10);
-        const month = parseInt(parts[1], 10) - 1;
-        const year = parseInt(parts[2], 10);
-        const dateObj = new Date(year, month, day);
-        if (dateObj.getDate() !== day || dateObj.getMonth() !== month || dateObj.getFullYear() !== year) {
-          alert('Please enter a valid date in dd-mm-yyyy format.');
-          document.getElementById("dob").focus();
-          return;
-        }
+      // Check if DOB is entered
+      if (!dobHidden.value) {
+        alert("Please enter Date of Birth in dd-mm-yyyy format.");
+        dobInput.focus();
+        return;
       }
 
       if (!studyInEl.value.trim()) {
@@ -1478,7 +1547,15 @@
       document.getElementById("firstName").value = member.firstName || "";
       document.getElementById("fatherName").value = member.fatherName || "";
       document.getElementById("surname").value = member.surname || "";
-      document.getElementById("dob").value = member.dob ? formatDate(member.dob) : "";
+      // Display DOB in dd-mm-yyyy format
+      if (member.dob) {
+        const formatted = formatDate(member.dob);
+        dobInput.value = formatted;
+        dobHidden.value = member.dob;
+      } else {
+        dobInput.value = "";
+        dobHidden.value = "";
+      }
       ageInput.value = member.age || "";
       document.getElementById("mobile").value = member.mobile || "";
       studyOrJobEl.value = member.studyOrJob || "";
